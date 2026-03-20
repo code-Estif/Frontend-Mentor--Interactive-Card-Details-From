@@ -1,0 +1,342 @@
+@import url("https://fonts.googleapis.com/css2?family=Alata&family=Barlow+Condensed:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Barlow:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Commissioner:wght@100..900&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Josefin+Sans:ital,wght@0,100..700;1,100..700&family=League+Spartan:wght@100..900&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Overpass:ital,wght@0,100..900;1,100..900&family=Public+Sans:ital,wght@0,100..900;1,100..900&family=Space+Grotesk:wght@300..700&family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap");
+:root {
+  --linearGradientBorder: linear-gradient(
+    hsl(249, 99%, 64%),
+    hsl(278, 94%, 30%)
+  );
+  --redError: hsl(0, 100%, 66%);
+  --white: hsl(0, 0%, 100%);
+  --lightGrayishViolet: hsl(270, 3%, 87%);
+  --darkGrayishViolet: hsl(279, 6%, 55%);
+  --veryDarkViolet: hsl(278, 68%, 11%);
+ 
+  --fs-large: 22.5px;
+  --fs-medium: 16px;
+  --fw: 500;
+  --ff: "Space Grotesk", sans-serif;
+}
+
+* > *,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-size: var(--fs-medium);
+  font-weight: var(--fw);
+  font-family: var(--ff);
+}
+
+.card-number,
+.completed-title {
+  font-size: var(--fs-large);
+}
+
+body {
+  min-height: 100vh;
+}
+
+.app-wrapper {
+  min-height: inherit;
+  display: grid;
+  grid-template-columns: 30% 1fr;
+}
+
+.card-screen {
+  position: relative;
+  background-image: url(images/bg-main-desktop.png);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+}
+
+.front-face,
+.back-face {
+  position: absolute;
+  --cardWidth: 375px;
+  --cardHeight: 195px;
+  --gap: 10px;
+  width: var(--cardWidth);
+  height: var(--cardHeight);
+  padding: 15px;
+  color: var(--white);
+  border-radius: 12px;
+}
+
+.front-face {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  background-image: url(images/bg-card-front.png);
+  background-position: center;
+  background-size: cover;
+  top: calc(50% - (var(--cardHeight) / 2) - var(--gap));
+  left: calc(50% + (var(--cardWidth) / 3));
+  transform: translate(-50%, -50%);
+}
+
+.card-logo {
+  width: 60px;
+}
+
+.personal-data {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.bottom-front-card {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: var(--lightGrayishViolet);
+}
+
+.back-face {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  background-image: url(images/bg-card-back.png);
+  background-position: center;
+  background-size: cover;
+  position: relative;
+  top: calc(50% + (var(--cardHeight) / 2) + var(--gap));
+  left: calc(50% + (var(--cardWidth) / 1.75));
+  transform: translate(-50%, -50%);
+}
+
+.cvc {
+  position: absolute;
+  top: 43.5%;
+  left: 80%;
+}
+
+.card-form {
+  position: relative;
+}
+
+.default-form,
+.completed-form {
+  width: 420px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: flex;
+  flex-direction: column;
+  gap: 2.5em;
+}
+
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  position: relative;
+}
+
+.pair {
+  width: 100%;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 25px;
+}
+
+.input-pair {
+  width: 100%;
+  display: flex;
+  gap: 10px;
+}
+
+label {
+  color: var(--veryDarkViolet);
+  text-transform: uppercase;
+  font-size: 0.9rem;
+  font-family: sans-serif;
+  font-weight: 600;
+  opacity: 0.7;
+}
+
+input {
+  color: var(--veryDarkViolet);
+  padding: 8px;
+  border: 2px solid var(--lightGrayishViolet);
+  border-radius: 8px;
+  outline: none;
+}
+
+input::placeholder {
+  opacity: 0.6;
+}
+
+input:focus {
+  border: double 2px transparent;
+  background-image: linear-gradient(white, white), var(--linearGradientBorder);
+  background-origin: border-box;
+  background-clip: padding-box, border-box;
+}
+.selected {
+  border: double 2px transparent;
+  background-image: linear-gradient(white, white), var(--linearGradientBorder);
+  background-origin: border-box;
+  background-clip: padding-box, border-box;
+}
+
+.input-pair input {
+  width: 50%;
+}
+
+.error-message {
+  position: absolute;
+  top: calc(100% + 5px);
+  font-size: 14px;
+  color: var(--redError);
+}
+
+.confirm-btn {
+  padding: 15px;
+  color: var(--white);
+  background-color: var(--veryDarkViolet);
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+.completed-form {
+  display: none;
+  align-items: center;
+  gap: 0;
+}
+
+.completed-logo {
+  width: 80px;
+}
+
+.completed-title {
+  font-size: 28px;
+  color: var(--veryDarkViolet);
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  margin-block: 1em 0.75em;
+}
+
+.completed-desc {
+  font-size: 18px;
+  color: var(--darkGrayishViolet);
+  margin-bottom: 2.75em;
+}
+
+.continue-btn {
+  width: 100%;
+  padding-block: 12.5px;
+  border: none;
+  border-radius: 8px;
+  color: var(--white);
+  background-color: var(--veryDarkViolet);
+  cursor: pointer;
+}
+
+@media (max-width: 1150px) {
+  .default-form,
+  .completed-form {
+    width: 60%;
+    left: 61%;
+  }
+}
+@media (max-width: 1020px) {
+  .pair {
+    grid-template-columns: 1fr 40%;
+  }
+  .front-face,
+  .back-face {
+    --cardWidth: 290px;
+    --cardHeight: 170px;
+    width: var(--cardWidth);
+    height: var(--cardHeight);
+  }
+  .front-face {
+    left: calc(50% + (var(--cardWidth) / 4.5));
+  }
+  .back-face {
+    left: calc(50% + (var(--cardWidth) / 3));
+  }
+}
+@media (max-width: 800px) {
+  .app-wrapper {
+    display: flex;
+    flex-direction: column;
+  }
+  .card-screen {
+    position: relative;
+    width: 100%;
+    height: 220px;
+    background-image: url(images/bg-main-mobile.png);
+  }
+  .front-face,
+  .back-face {
+    --cardWidth: 290px;
+    --cardHeight: 150px;
+  }
+  .front-face {
+    top: calc(50% + (var(--cardHeight) * 0.5));
+    left: calc(50% - (var(--cardWidth) * 0.2));
+    z-index: 10;
+  }
+  .back-face {
+    top: 45%;
+    left: calc(50% + (var(--cardWidth) * 0.2));
+  }
+  .cvc {
+    top: 43%;
+    left: 78%;
+  }
+  .card-form {
+    margin-top: 290px;
+  }
+  .default-form,
+  .completed-form {
+    width: 90%;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    padding-bottom: 50px;
+  }
+}
+@media (max-width: 450px) {
+  :root {
+    --fs-large: 18px;
+    --fs-medium: 14px;
+  }
+  .front-face,
+  .back-face {
+    width: 77.5%;
+  }
+  .front-face {
+    left: calc(50% - (var(--cardWidth) * 0.1));
+  }
+  .back-face {
+    left: calc(50% + (var(--cardWidth) * 0.1));
+  }
+  .card-number,
+  .card-name,
+  .card-date,
+  .cvc {
+    font-size: 15px;
+  }
+}
+@media (max-width: 330px) {
+  .front-face,
+  .back-face {
+    width: 90%;
+    left: 50%;
+  }
+}
+@media (max-width: 280px) {
+  .card-form {
+    margin-top: 332.5px;
+  }
+  .pair {
+    display: flex;
+    flex-direction: column;
+  }
+}

@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="./images/favicon-32x32.png"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Alata&family=Barlow+Condensed:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Barlow:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Commissioner:wght@100..900&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Josefin+Sans:ital,wght@0,100..700;1,100..700&family=League+Spartan:wght@100..900&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Overpass:ital,wght@0,100..900;1,100..900&family=Public+Sans:ital,wght@0,100..900;1,100..900&family=Space+Grotesk:wght@300..700&family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="style.css" type="text/css" />
+    <title>Frontend Mentor | Interactive card details form</title>
+  </head>
+  <body>
+    <main class="app-wrapper">
+      <section class="card-screen">
+        <div class="front-face">
+          <img class="card-logo" src="images/card-logo.svg" alt="card-logo" />
+          <div class="personal-data">
+            <p class="card-number">0000 0000 0000 0000</p>
+            <div class="bottom-front-card">
+              <p class="card-name">Jane Appleseed</p>
+              <p class="exp-date">
+                <span class="exp-month">00</span>
+                /
+                <span class="exp-year">00</span>
+              </p>
+            </div>
+          </div>
+        </div>
+        <div class="back-face">
+          <p class="cvc">000</p>
+        </div>
+      </section>
+      <section class="card-form">
+        <div class="default-form">
+          <div class="field">
+            <label for="name-input">Cardholder Name</label>
+            <input
+              type="text"
+              id="name-input"
+              placeholder="e.g. Jane Appleseed"
+            />
+            <div class="error-message"></div>
+          </div>
+          <div class="field">
+            <label for="number-input">Card Number</label>
+            <input
+              type="text"
+              id="number-input"
+              maxlength="19"
+              placeholder="e.g. 1234 5678 9123 0000"
+            />
+            <div class="error-message"></div>
+          </div>
+          <div class="pair">
+            <div class="field">
+              <label for="month-input">Exp. Date (MM/YY)</label>
+              <div class="input-pair">
+                <input
+                  maxlength="2"
+                  type="text"
+                  id="month-input"
+                  pattern="^[^A-Za-z]*$"
+                  placeholder="MM"
+                />
+                <input
+                  maxlength="2"
+                  type="text"
+                  id="year-input"
+                  placeholder="YY"
+                />
+                <div class="error-message"></div>
+              </div>
+            </div>
+            <div class="field">
+              <label for="cvc-input">CVC</label>
+              <input
+                maxlength="3"
+                type="text"
+                id="cvc-input"
+                placeholder="e.g. 123"
+              />
+              <div class="error-message"></div>
+            </div>
+          </div>
+          <button class="confirm-btn">Confirm</button>
+        </div>
+        <div class="completed-form">
+          <img
+            class="completed-logo"
+            src="images/icon-complete.svg"
+            alt="icon-complete"
+          />
+          <h2 class="completed-title">Thank you!</h2>
+          <p class="completed-desc">We've added your card details</p>
+          <button class="continue-btn">Continue</button>
+        </div>
+      </section>
+    </main>
+    <script src="script.js"></script>
+  </body>
+</html>

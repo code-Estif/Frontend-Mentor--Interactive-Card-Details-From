@@ -1,0 +1,96 @@
+Create an interactive credit card details form with real-time card preview and validation.
+
+## **Layout Structure:**
+- Use a two-column grid layout: 30% for card display, 70% for form
+- Left section: Display two overlapping credit cards (front and back)
+- Right section: Input form with validation and completed state
+- Use semantic HTML5 with `<main>`, `<section>`, and proper labels
+
+## **Credit Card Display (Left Section):**
+- **Front Card:** 
+  - Purple gradient background (images/bg-card-front.png)
+  - Display: Card number (formatted in groups of 4), cardholder name, expiry date (MM/YY)
+  - White card logo (images/card-logo.svg)
+  - Position: Upper card, slightly offset to left
+- **Back Card:**
+  - Light grey background (images/bg-card-back.png)
+  - Display: CVC number
+  - Position: Lower card, slightly offset to right
+- Cards should overlap with 10px gap between them
+
+## **Input Form (Right Section):**
+**Default Form State:**
+- **Cardholder Name field:** Text input, placeholder "e.g. Jane Appleseed"
+- **Card Number field:** Text input, maxlength 19, placeholder "e.g. 1234 5678 9123 0000"
+- **Expiry Date:** Two separate inputs in flex container
+  - Month input: maxlength 2, placeholder "MM", pattern to reject letters
+  - Year input: maxlength 2, placeholder "YY"
+- **CVC field:** Text input, maxlength 3, placeholder "e.g. 123"
+- **Confirm button:** Dark violet background, white text, rounded corners
+
+**Completed State:**
+- Success icon (images/icon-complete.svg)
+- "Thank you!" title (28px, uppercase, letter-spacing 0.15em)
+- "We've added your card details" description (18px)
+- "Continue" button to reset form
+
+## **Real-time Updates:**
+- As user types in name field → Update card name display
+- As user types card number → Format with spaces every 4 digits, update card display
+- As user types expiry → Update month/year displays on card
+- As user types CVC → Update CVC display on back card
+
+## **Validation Logic:**
+- **Name:** Cannot be blank, must match name pattern (letters, spaces, hyphens)
+- **Card Number:** Must be 16 digits, format "XXXX XXXX XXXX XXXX", numbers only
+- **Month:** Must be 01-12, numbers only
+- **Year:** Must be 2 digits, not outdated (current year check)
+- **CVC:** Must be 3 digits, numbers only
+- Show error messages below each field with red text
+
+## **Styling Requirements:**
+**CSS Variables:**
+- `--linearGradientBorder`: Purple to violet gradient for focus states
+- `--redError`: Red for validation errors
+- `--white`, `--lightGrayishViolet`, `--darkGrayishViolet`, `--veryDarkViolet`
+- `--fs-large`: 22.5px, `--fs-medium`: 16px
+- Font: Space Grotesk, weight 500
+
+**Interactive States:**
+- **Focus:** Double border with gradient background
+- **Error:** 2px solid red border
+- **Valid:** 2px solid gray border
+- **Hover states** on buttons
+
+**Responsive Design:**
+- **Desktop (>1150px):** Side-by-side layout, cards 375x195px, form 420px wide
+- **Tablet (800-1150px):** Adjust card sizes to 290x170px, reposition
+- **Mobile (<800px):** Stack layout, cards 290x150px, form 90% width, centered
+
+## **JavaScript Functionality:**
+- Event listeners for focusin, focusout, and input events
+- Input validity array tracking form state
+- Real-time card updates as user types
+- Form submission: Check all inputs valid, show completed state
+- Continue button: Reset form, clear inputs, show default form
+- Auto-format card number with spaces
+- Prevent non-numeric input for number fields
+
+## **Assets Required:**
+- `images/bg-main-desktop.png` - Desktop background
+- `images/bg-main-mobile.png` - Mobile background  
+- `images/bg-card-front.png` - Front card background
+- `images/bg-card-back.png` - Back card background
+- `images/card-logo.svg` - Card logo
+- `images/icon-complete.svg` - Success icon
+- `images/favicon-32x32.png` - Favicon
+
+## **Technical Specifications:**
+- Use CSS Grid for main layout
+- CSS custom properties for theming
+- Flexbox for card layouts and form structure
+- Transform positioning for overlapping cards
+- Background-clip technique for gradient borders
+- Smooth transitions between form states
+
+This creates a fully functional, responsive interactive card details form with real-time preview, comprehensive validation, and modern design matching Frontend Mentor specifications.

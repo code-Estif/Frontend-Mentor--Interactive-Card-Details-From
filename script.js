@@ -12,7 +12,7 @@ const numberInput = document.getElementById("number-input");
 const monthInput = document.getElementById("month-input");
 const yearInput = document.getElementById("year-input");
 const cvcInput = document.getElementById("cvc-input");
-let inputValidity = new Array(4).fill(false);
+let inputValidity = new Array(5).fill(false);
 
 const errorMessages = document.querySelectorAll(".error-message");
 
@@ -157,35 +157,35 @@ yearInput.addEventListener("focusin", () => {
     const currentYearLastTwoDigits = currentYear % 100;
 
     if (yearValue === "") {
-      inputValidity[2] = false;
+      inputValidity[3] = false;
       yearInput.style.border = "2px solid var(--redError)";
-      errorMessages[2].textContent = "Can't be blank";
+      errorMessages[3].textContent = "Can't be blank";
     } else if (!/^\d{2}$/.test(yearValue)) {
-      inputValidity[2] = false;
+      inputValidity[3] = false;
       yearInput.style.border = "2px solid var(--redError)";
-      errorMessages[2].textContent = "Wrong format";
+      errorMessages[3].textContent = "Wrong format";
     } else if (parseInt(yearValue) < currentYearLastTwoDigits) {
-      inputValidity[2] = false;
+      inputValidity[3] = false;
       yearInput.style.border = "2px solid var(--redError)";
-      errorMessages[2].textContent = "Outdated format";
+      errorMessages[3].textContent = "Outdated format";
     } else {
-      inputValidity[2] = true;
+      inputValidity[3] = true;
       yearInput.style.border = "double 2px transparent";
-      errorMessages[2].textContent = "";
+      errorMessages[3].textContent = "";
     }
 
     yearInput.addEventListener("focusout", () => {
-      yearInput.style.border = inputValidity[2]
+      yearInput.style.border = inputValidity[3]
         ? "2px solid var(--darkGrayishViolet)"
         : "2px solid var(--redError)";
     });
   });
   yearInput.addEventListener("focusout", () => {
-    yearInput.style.border = inputValidity[2]
+    yearInput.style.border = inputValidity[3]
       ? "2px solid var(--darkGrayishViolet)"
       : "2px solid var(--redError)";
-    if (inputValidity[2] === false && errorMessages[2].textContent === "") {
-      errorMessages[2].textContent = "Can't be blank";
+    if (inputValidity[3] === false && errorMessages[3].textContent === "") {
+      errorMessages[3].textContent = "Can't be blank";
     }
   });
 });
@@ -198,31 +198,31 @@ cvcInput.addEventListener("focusin", () => {
     cvc.textContent = cvcValue || "000";
 
     if (cvcValue === "") {
-      inputValidity[3] = false;
+      inputValidity[4] = false;
       cvcInput.style.border = "2px solid var(--redError)";
-      errorMessages[3].textContent = "Can't be blank";
+      errorMessages[4].textContent = "Can't be blank";
     } else if (!/^\d{3}$/.test(cvcValue)) {
-      inputValidity[3] = false;
+      inputValidity[4] = false;
       cvcInput.style.border = "2px solid var(--redError)";
-      errorMessages[3].textContent = "Wrong format";
+      errorMessages[4].textContent = "Wrong format";
     } else {
-      inputValidity[3] = true;
+      inputValidity[4] = true;
       cvcInput.style.border = "double 2px transparent";
-      errorMessages[3].textContent = "";
+      errorMessages[4].textContent = "";
     }
 
     cvcInput.addEventListener("focusout", () => {
-      cvcInput.style.border = inputValidity[3]
+      cvcInput.style.border = inputValidity[4]
         ? "2px solid var(--darkGrayishViolet)"
         : "2px solid var(--redError)";
     });
   });
   cvcInput.addEventListener("focusout", () => {
-    cvcInput.style.border = inputValidity[3]
+    cvcInput.style.border = inputValidity[4]
       ? "2px solid var(--darkGrayishViolet)"
       : "2px solid var(--redError)";
-    if (inputValidity[3] === false && errorMessages[3].textContent === "") {
-      errorMessages[3].textContent = "Can't be blank";
+    if (inputValidity[4] === false && errorMessages[4].textContent === "") {
+      errorMessages[4].textContent = "Can't be blank";
     }
   });
 });

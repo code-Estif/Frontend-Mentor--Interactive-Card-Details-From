@@ -27,7 +27,12 @@
   font-family: var(--ff);
 }
 
-.card-number,
+.card-number {
+  font-size: 28px;
+  letter-spacing: 2px;
+  width: 100%;
+}
+
 .completed-title {
   font-size: var(--fs-large);
 }
@@ -322,6 +327,9 @@ input:focus {
   .card-date,
   .cvc {
     font-size: 15px;
+  }
+  .card-number {
+    font-size: 19px;
   }
 }
 @media (max-width: 330px) {
